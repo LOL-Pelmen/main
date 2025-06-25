@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ТранзитПро - Пассажирские перевозки по Вологодской области</title>
+<script src="https://cdn.tailwindcss.com/3.4.16">
+</script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { primary: "#1a3a6a", secondary: "#4a90e2" },
+      borderRadius: {
+        none: "0px",
+        sm: "4px",
+        DEFAULT: "8px",
+        md: "12px",
+        lg: "16px",
+        xl: "20px",
+        "2xl": "24px",
+        "3xl": "32px",
+        full: "9999px",
+        button: "8px",
+      },
+    },
+  },
+};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Montserrat', sans-serif;
+}
+.hero-section {
+background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=modern%20comfortable%20passenger%20bus%20on%20a%20scenic%20road%20in%20Vologda%20region%2C%20Russia%2C%20with%20beautiful%20forest%20landscape%2C%20professional%20high-quality%20photograph%2C%20realistic%2C%20cinematic%20lighting%2C%20morning%20light%2C%20no%20people%20visible%20in%20the%20bus&width=1920&height=800&seq=123&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+.search-form input, .search-form select {
+background-color: white;
+border: none;
+outline: none;
+}
+.search-form input:focus, .search-form select:focus {
+ring: 2px;
+ring-color: #4a90e2;
+}
+.popular-route-card {
+background-size: cover;
+background-position: center;
+transition: transform 0.3s ease;
+}
+.popular-route-card:hover {
+transform: translateY(-5px);
+}
+.advantage-card {
+transition: transform 0.3s ease;
+}
+.advantage-card:hover {
+transform: translateY(-5px);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<nav class="bg-primary text-white py-4">
+<div class="container mx-auto px-4 flex justify-between items-center">
+<div class="flex items-center">
+<h1 class="text-2xl font-['Pacifico'] mr-8">ТранзитПро</h1>
+<div class="hidden md:flex space-x-6">
+<a href="index.html" class="hover:text-gray-300">Главная</a>
+<a href="" class="hover:text-gray-300">О компании</a>
+<a href="Расписание.html" class="hover:text-gray-300">Расписание</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<a href="tel:+78172123456" class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-phone-line text-lg"></i>
+</div>
+<span>+7 (8172) 12-34-56</span>
+</a>
+</div>
+</div>
+</nav>
+<section class="relative bg-gradient-to-r from-primary to-secondary py-20 overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://readdy.ai/api/search-image?query=modern%20bus%20terminal%20interior%20with%20people%20waiting%2C%20blurred%20background%2C%20soft%20lighting%2C%20professional%20architecture%20photo%2C%20muted%20colors&width=1920&height=600&seq=132&orientation=landscape')] bg-cover bg-center opacity-10"></div>
+<div class="container mx-auto px-4 relative">
+<div class="max-w-4xl mx-auto">
+<div class="flex flex-col items-center text-center text-white mb-12">
+<div class="w-20 h-1 bg-white/30 rounded-full mb-8"></div>
+<h1 class="text-5xl font-bold mb-6">Узнайте больше о нашей компании и познакомьтесь с опытом наших пассажиров</h1>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+<div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+<div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-star-line text-2xl text-white"></i>
+</div>
+</div>
+<div class="text-4xl font-bold mb-2">4.9</div>
+<p class="text-white/80">Средняя оценка</p>
+</div>
+<div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+<div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-group-line text-2xl text-white"></i>
+</div>
+</div>
+<div class="text-4xl font-bold mb-2">100K+</div>
+<p class="text-white/80">Довольных клиентов</p>
+</div>
+<div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+<div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-message-3-line text-2xl text-white"></i>
+</div>
+</div>
+<div class="text-4xl font-bold mb-2">15K+</div>
+<p class="text-white/80">Положительных отзывов</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="flex items-center mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle%20aged%20russian%20woman%20with%20blonde%20hair%20and%20friendly%20smile%2C%20business%20casual%20attire%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=128&orientation=squarish" alt="Анна Петрова" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-semibold">Анна Петрова</h3>
+<p class="text-sm text-gray-600">Постоянный пассажир</p>
+</div>
+</div>
+<div class="flex mb-3">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-3">Регулярно езжу из Вологды в Череповец по работе. Очень довольна сервисом ТранзитПро - всегда чистые автобусы, вежливые водители и удобное расписание. Особенно радует возможность покупки билетов онлайн.</p>
+<p class="text-sm text-gray-500">15 июня 2025</p>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="flex items-center mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle%20aged%20russian%20man%20with%20brown%20hair%20and%20friendly%20smile%2C%20casual%20business%20attire%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=129&orientation=squarish" alt="Михаил Соколов" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-semibold">Михаил Соколов</h3>
+<p class="text-sm text-gray-600">Путешественник</p>
+</div>
+</div>
+<div class="flex mb-3">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-3">Ездил с семьей в Великий Устюг. Порадовало наличие кондиционера в автобусе и профессионализм водителя. Комфортные сиденья и плавная езда сделали длительную поездку приятной.</p>
+<p class="text-sm text-gray-500">12 июня 2025</p>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="flex items-center mb-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20russian%20woman%20with%20dark%20hair%20and%20warm%20smile%2C%20casual%20attire%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=130&orientation=squarish" alt="Екатерина Морозова" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-semibold">Екатерина Морозова</h3>
+<p class="text-sm text-gray-600">Студентка</p>
+</div>
+</div>
+<div class="flex mb-3">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center text-yellow-400">
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-3">Часто езжу домой из университета. Цены доступные, есть студенческие скидки. Автобусы всегда приходят вовремя, что очень важно для меня. Спасибо за качественный сервис!</p>
+<p class="text-sm text-gray-500">10 июня 2025</p>
+</div>
+</div>
+<div class="max-w-4xl mx-auto">
+<div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+<h2 class="text-2xl font-bold mb-6">Часто задаваемые вопросы</h2>
+<div class="space-y-6">
+<div>
+<h3 class="font-semibold mb-2">Как купить билет онлайн?</h3>
+<p class="text-gray-700">Для покупки билета онлайн достаточно выбрать маршрут, дату и время на нашем сайте или в мобильном приложении. После оплаты вы получите электронный билет на email.</p>
+</div>
+<div>
+<h3 class="font-semibold mb-2">Какой багаж можно взять с собой?</h3>
+<p class="text-gray-700">Каждый пассажир может бесплатно провезти одно место багажа весом до 20 кг и ручную кладь до 5 кг. Дополнительный багаж оплачивается отдельно.</p>
+</div>
+<div>
+<h3 class="font-semibold mb-2">Можно ли вернуть билет?</h3>
+<p class="text-gray-700">Да, возврат билета возможен не позднее 2 часов до отправления автобуса. При возврате за сутки и более до поездки комиссия не взимается.</p>
+</div>
+<div>
+<h3 class="font-semibold mb-2">Есть ли скидки для детей?</h3>
+<p class="text-gray-700">Дети до 5 лет путешествуют бесплатно без предоставления отдельного места. Для детей от 5 до 12 лет действует скидка 50% от стоимости билета.</p>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-8">
+<h2 class="text-2xl font-bold mb-6">О компании ТранзитПро</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<p class="text-gray-700 mb-4">Компания ТранзитПро начала свою деятельность в 2010 году и за это время стала одним из лидеров пассажирских перевозок в Вологодской области. Мы постоянно развиваемся и улучшаем качество обслуживания наших пассажиров.</p>
+<p class="text-gray-700 mb-4">Наш автопарк насчитывает более 50 современных автобусов, оборудованных по последнему слову техники. Все транспортные средства проходят регулярное техническое обслуживание и соответствуют высоким стандартам безопасности.</p>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="text-2xl font-bold text-primary mb-1">15+</div>
+<div class="text-sm text-gray-600">лет на рынке</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="text-2xl font-bold text-primary mb-1">500+</div>
+<div class="text-sm text-gray-600">рейсов ежедневно</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="text-2xl font-bold text-primary mb-1">60+</div>
+<div class="text-sm text-gray-600">населенных пунктов</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="text-2xl font-bold text-primary mb-1">100K+</div>
+<div class="text-sm text-gray-600">довольных клиентов</div>
+</div>
+</div>
+</div>
+<div>
+<img src="https://readdy.ai/api/search-image?query=modern%20bus%20terminal%20interior%20with%20digital%20displays%20and%20comfortable%20waiting%20area%2C%20clean%20and%20well-lit%20space%2C%20professional%20architecture%20photo&width=600&height=400&seq=131&orientation=landscape" alt="Терминал ТранзитПро" class="rounded-lg shadow-md w-full h-auto mb-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center">
+<div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-shield-check-line text-primary"></i>
+</div>
+</div>
+<span class="text-gray-700">Безопасность</span>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-timer-line text-primary"></i>
+</div>
+</div>
+<span class="text-gray-700">Пунктуальность</span>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-customer-service-2-line text-primary"></i>
+</div>
+</div>
+<span class="text-gray-700">Комфорт</span>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-wallet-3-line text-primary"></i>
+</div>
+</div>
+<span class="text-gray-700">Доступные цены</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="container mx-auto px-4 flex justify-between items-center">
+<div class="flex items-center">
+  <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-['Pacifico'] mb-4">ТранзитПро</h3>
+                    <p class="text-gray-400 mb-4">Надежные пассажирские перевозки по Вологодской области с 2010 года.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition duration-300">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-vk-line"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition duration-300">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-telegram-line"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition duration-300">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-whatsapp-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Информация</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition duration-200">О компании</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-200">Наши маршруты</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-200">Расписание рейсов</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-200">Правила перевозки</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-200">Часто задаваемые вопросы</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Контакты</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-0.5 mr-2">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span>г. Вологда, ул. Транспортная, 15</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-0.5 mr-2">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span>+7 (8172) 12-34-56</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-0.5 mr-2">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span>info@transitpro.ru</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-0.5 mr-2">
+                                <i class="ri-time-line"></i>
+                            </div>
+                            <span>Ежедневно с 6:00 до 22:00</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Подписка на новости</h4>
+                    <p class="text-gray-400 mb-4">Подпишитесь на нашу рассылку, чтобы получать информацию о специальных предложениях и акциях.</p>
+                    <form>
+                        <div class="flex mb-2">
+                            <input type="email" placeholder="Ваш email" class="bg-gray-800 border-none text-white px-4 py-2 rounded-l-button w-full focus:outline-none focus:ring-2 focus:ring-primary">
+                            <button type="submit" class="bg-primary px-4 py-2 rounded-r-button whitespace-nowrap">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-send-plane-line"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 mt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 ТранзитПро. Все права защищены.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-500 text-sm hover:text-white transition duration-200">Политика конфиденциальности</a>
+                        <a href="#" class="text-gray-500 text-sm hover:text-white transition duration-200">Пользовательское соглашение</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>

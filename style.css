@@ -1,0 +1,32 @@
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.hero-section {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=modern%20comfortable%20passenger%20bus%20on%20a%20scenic%20road%20in%20Vologda%20region%2C%20Russia%2C%20with%20beautiful%20forest%20landscape%2C%20professional%20high-quality%20photograph%2C%20realistic%2C%20cinematic%20lighting%2C%20morning%20light%2C%20no%20people%20visible%20in%20the%20bus&width=1920&height=800&seq=123&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+.search-form input, .search-form select {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    outline: none;
+}
+.search-form input:focus, .search-form select:focus {
+    ring: 2px;
+    ring-color: #4a90e2;
+}
+.popular-route-card {
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+.popular-route-card:hover {
+    transform: translateY(-5px);
+}
+.advantage-card {
+    transition: transform 0.3s ease;
+}
+.advantage-card:hover {
+    transform: translateY(-5px);
+}

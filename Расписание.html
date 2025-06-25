@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТранзитПро - Расписание автобусов</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#1e3a8a',secondary:'#475569'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-primary text-white py-4">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="/" class="font-['Pacifico'] text-2xl mr-8 text-white">ТранзитПро</a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-white hover:text-gray-200 transition">Главная</a>
+                    <a href="#" class="text-white hover:text-gray-200 transition font-medium">Расписание автобусов</a>
+                    <a href="о компании.html" class="text-white hover:text-gray-200 transition">О компании</a>
+                </nav>
+            </div>
+            <div class="flex items-center">
+                <div class="flex items-center text-white">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <span>+7 (8172) 12-34-56</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow py-4">
+        <div class="container mx-auto px-4">
+           
+            <div class="flex items-center mb-6 mt-2">
+                <div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+                    <i class="ri-bus-line"></i>
+                </div>
+                <h1 class="text-2xl font-semibold text-gray-800">Расписание автобусов</h1>
+            </div>
+
+            
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    
+                    <div>
+                        <label for="from" class="block text-sm font-medium text-gray-700 mb-1">Откуда</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                            </div>
+                            <input type="text" id="from" class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded text-gray-900 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Введите город отправления">
+                        </div>
+                    </div>
+
+                
+                    <div>
+                        <label for="to" class="block text-sm font-medium text-gray-700 mb-1">Куда</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                            </div>
+                            <input type="text" id="to" class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded text-gray-900 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Введите город прибытия">
+                        </div>
+                    </div>
+
+                   
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Дата</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-calendar-line"></i>
+                                </div>
+                            </div>
+                            <input type="text" id="date" class="block w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded text-gray-900 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary" placeholder="ДД.ММ.ГГГГ">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-calendar-event-line"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2 md:mb-0">Доступные рейсы</h2>
+                    
+                    <div class="flex items-center">
+                        <span class="text-sm text-gray-600 mr-2">Фильтры:</span>
+                        <div class="bg-white rounded-full inline-flex p-1 border border-gray-200">
+                            <button class="px-4 py-1 text-sm rounded-full hover:bg-gray-100 text-gray-700">Раннее утро</button>
+                            <button class="px-4 py-1 text-sm rounded-full bg-primary text-white">День</button>
+                            <button class="px-4 py-1 text-sm rounded-full hover:bg-gray-100 text-gray-700">Вечер</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Routes List -->
+                <div class="space-y-4">
+                    <!-- Route 1 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div class="flex items-center mb-3 md:mb-0">
+                            <div class="bg-blue-100 rounded-full p-3 mr-4">
+                                <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                    <i class="ri-bus-line"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <span class="font-medium text-gray-900">Вологда</span>
+                                    <div class="w-4 h-4 flex items-center justify-center mx-2 text-gray-400">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                    <span class="font-medium text-gray-900">Великий Устюг</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                        <i class="ri-time-line"></i>
+                                    </div>
+                                    <span>6 часов в пути</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between w-full md:w-auto">
+                            <div class="md:mr-8 md:text-right">
+                                <div class="text-lg font-semibold text-gray-900">07:00 - 13:00</div>
+                                <div class="text-sm font-medium text-gray-700">850 ₽</div>
+                            </div>
+                            <button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-blue-800 transition">Забронировать</button>
+                        </div>
+                    </div>
+
+                    <!-- Route 2 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div class="flex items-center mb-3 md:mb-0">
+                            <div class="bg-blue-100 rounded-full p-3 mr-4">
+                                <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                    <i class="ri-bus-line"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <span class="font-medium text-gray-900">Череповец</span>
+                                    <div class="w-4 h-4 flex items-center justify-center mx-2 text-gray-400">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                    <span class="font-medium text-gray-900">Кириллов</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                        <i class="ri-time-line"></i>
+                                    </div>
+                                    <span>1.5 часа в пути</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between w-full md:w-auto">
+                            <div class="md:mr-8 md:text-right">
+                                <div class="text-lg font-semibold text-gray-900">09:30 - 11:00</div>
+                                <div class="text-sm font-medium text-gray-700">350 ₽</div>
+                            </div>
+                            <button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-blue-800 transition">Забронировать</button>
+                        </div>
+                    </div>
+
+                    <!-- Route 3 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div class="flex items-center mb-3 md:mb-0">
+                            <div class="bg-blue-100 rounded-full p-3 mr-4">
+                                <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                    <i class="ri-bus-line"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <span class="font-medium text-gray-900">Вологда</span>
+                                    <div class="w-4 h-4 flex items-center justify-center mx-2 text-gray-400">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                    <span class="font-medium text-gray-900">Тотьма</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                        <i class="ri-time-line"></i>
+                                    </div>
+                                    <span>3 часа в пути</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between w-full md:w-auto">
+                            <div class="md:mr-8 md:text-right">
+                                <div class="text-lg font-semibold text-gray-900">11:30 - 14:30</div>
+                                <div class="text-sm font-medium text-gray-700">550 ₽</div>
+                            </div>
+                            <button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-blue-800 transition">Забронировать</button>
+                        </div>
+                    </div>
+
+                    <!-- Route 4 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div class="flex items-center mb-3 md:mb-0">
+                            <div class="bg-blue-100 rounded-full p-3 mr-4">
+                                <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                    <i class="ri-bus-line"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <span class="font-medium text-gray-900">Череповец</span>
+                                    <div class="w-4 h-4 flex items-center justify-center mx-2 text-gray-400">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                    <span class="font-medium text-gray-900">Белозерск</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                        <i class="ri-time-line"></i>
+                                    </div>
+                                    <span>2.5 часа в пути</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between w-full md:w-auto">
+                            <div class="md:mr-8 md:text-right">
+                                <div class="text-lg font-semibold text-gray-900">13:00 - 15:30</div>
+                                <div class="text-sm font-medium text-gray-700">450 ₽</div>
+                            </div>
+                            <button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-blue-800 transition">Забронировать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <a href="/" class="font-['Pacifico'] text-2xl mb-4 inline-block text-white">ТранзитПро</a>
+                    <p class="text-gray-400 mb-4">Надежные пассажирские перевозки по Вологодской области с 2010 года.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-telegram-line"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-vk-line"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-whatsapp-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Information -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Информация</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">О компании</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Наши маршруты</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Расписание рейсов</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Часто задаваемые вопросы</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacts -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Контакты</h3>
+                    <ul class="space-y-3">
+                        <li class="flex">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-gray-400">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span class="text-gray-400">г. Вологда, ул. Транспортная, 15</span>
+                        </li>
+                        <li class="flex">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-gray-400">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="text-gray-400">+7 (8172) 12-34-56</span>
+                        </li>
+                        <li class="flex">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-gray-400">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="text-gray-400">info@transitpro.ru</span>
+                        </li>
+                        <li class="flex">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-gray-400">
+                                <i class="ri-time-line"></i>
+                            </div>
+                            <span class="text-gray-400">Ежедневно с 6:00 до 22:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Подписка на новости</h3>
+                    <p class="text-gray-400 mb-4">Подпишитесь на нашу рассылку, чтобы получать информацию о специальных предложениях и акциях.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Ваш email" class="bg-gray-800 text-white px-4 py-2 rounded-l-button focus:outline-none focus:ring-1 focus:ring-primary border-none flex-grow">
+                        <button class="bg-primary text-white px-4 py-2 rounded-r-button hover:bg-blue-700 transition whitespace-nowrap">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-send-plane-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-2 md:mb-0">© 2025 ТранзитПро. Все права защищены.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-500 hover:text-gray-400 text-sm">Политика конфиденциальности</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-400 text-sm">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script id="datePickerScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('date');
+            
+            dateInput.addEventListener('focus', function() {
+                if (!this.value) {
+                    const today = new Date();
+                    const day = String(today.getDate()).padStart(2, '0');
+                    const month = String(today.getMonth() + 1).padStart(2, '0');
+                    const year = today.getFullYear();
+                    this.value = `${day}.${month}.${year}`;
+                }
+            });
+            
+            dateInput.addEventListener('blur', function() {
+                const datePattern = /^(\d{2})\.(\d{2})\.(\d{4})$/;
+                if (!datePattern.test(this.value)) {
+                    this.value = '';
+                }
+            });
+        });
+    </script>
+
+    <script id="filterButtonsScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.rounded-full.px-4.py-1');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary', 'text-white');
+                        btn.classList.add('hover:bg-gray-100', 'text-gray-700');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('bg-primary', 'text-white');
+                    this.classList.remove('hover:bg-gray-100', 'text-gray-700');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
